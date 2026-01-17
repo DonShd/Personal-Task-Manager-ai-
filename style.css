@@ -1,0 +1,314 @@
+/* 全局重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 头部样式 */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 主要内容区域 */
+main {
+    padding: 30px;
+}
+
+/* 控制区样式 */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-box label {
+    color: #555;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e1e5eb;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#add-task-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#add-task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+#add-task-btn:active {
+    transform: translateY(0);
+}
+
+/* 过滤导航样式 */
+.filters {
+    margin-bottom: 30px;
+}
+
+.filters ul {
+    display: flex;
+    list-style: none;
+    background: #f8f9fa;
+    border-radius: 25px;
+    padding: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.filter-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #6c757d;
+}
+
+.filter-btn:hover {
+    color: #495057;
+}
+
+.filter-btn.active {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    font-weight: 500;
+}
+
+/* 任务列表样式 */
+.task-list {
+    min-height: 400px;
+}
+
+.empty-state {
+    text-align: center;
+    color: #6c757d;
+    font-size: 18px;
+    padding: 60px 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="%23dee2e6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>') center 20px no-repeat;
+    background-size: 48px;
+    opacity: 0.7;
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-left: 5px solid #667eea;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background: white;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #b8c2cc;
+}
+
+.task-checkbox {
+    position: relative;
+    top: 3px;
+    margin-right: 15px;
+}
+
+.task-checkbox input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ced4da;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.task-checkbox input:checked {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.task-checkbox input:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.task-completed .task-title {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.task-due-date {
+    font-size: 14px;
+    color: #868e96;
+    margin-bottom: 8px;
+}
+
+.task-description {
+    font-size: 15px;
+    color: #495057;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.task-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: #212529;
+}
+
+.edit-btn:hover {
+    background: #e0a800;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}\n
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* 统计信息样式 */
+.stats {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #495057;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        min-width: auto;
+    }
+    
+    .filters ul {
+        flex-wrap: wrap;
+    }
+    
+    .task-item {
+        padding: 16px;
+    }
+}
